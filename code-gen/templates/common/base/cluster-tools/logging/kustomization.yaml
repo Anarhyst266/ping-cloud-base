@@ -42,12 +42,3 @@ patchesStrategicMerge:
     annotations:
       purpose: service-account-for-ping-cloud-stack
       ${IRSA_PING_ANNOTATION_KEY_VALUE}
-
-- |-
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: newrelic-license-key
-    namespace: elastic-stack-logging
-  data:
-    NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY_BASE64}
