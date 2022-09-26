@@ -244,6 +244,14 @@ patchesStrategicMerge:
     name: healthcheck-pingfederate
   spec: 
     schedule: "@hourly"
+- |-
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: nr-license-key
+    namespace: elastic-stack-logging
+  data:
+    NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY_BASE64}
 
 patchesJson6902:
 
