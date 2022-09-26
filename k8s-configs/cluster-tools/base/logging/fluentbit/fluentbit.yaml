@@ -816,7 +816,7 @@ spec:
             - name: NR_LICENSE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: newrelic-license-key
+                  name: nr-license-key
                   key: NEW_RELIC_LICENSE_KEY
             - name: S3_BUCKET
               valueFrom:
