@@ -42,14 +42,7 @@ configMapGenerator:
     - PROMETHEUS_PING_NAMESPACE=${PING_CLOUD_NAMESPACE}
 
 patchesStrategicMerge:
-- |-
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: newrelic-license-key
-    namespace: elastic-stack-logging
-  data:
-    NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY_BASE64}
+
 ### Lets encrypt ACME certificate issuer for the cluster ###
 - |-
   apiVersion: cert-manager.io/v1
