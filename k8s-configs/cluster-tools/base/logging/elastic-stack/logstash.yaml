@@ -111,10 +111,6 @@ spec:
         env:
           - name: CONTAINER_NAME
             value: "logstash"
-          - name: NODE_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.nodeName
           - name: CONFIG_RELOAD_AUTOMATIC
             value: "true"
           - name: CONFIG_RELOAD_INTERVAL
