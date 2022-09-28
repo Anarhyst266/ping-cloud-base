@@ -203,7 +203,7 @@ spec:
           value: "UTF-8"
         
         volumeMounts:
-        - name: enrichment-cache-files
+        - name: logstash-efs-tmp
           mountPath: /enrichment-cache-files
           readOnly: false
 
