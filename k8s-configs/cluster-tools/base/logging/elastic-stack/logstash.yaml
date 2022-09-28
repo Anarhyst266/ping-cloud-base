@@ -171,7 +171,7 @@ spec:
         - name: enrichment-elasticsearch-index-templates
           mountPath: /usr/share/logstash/index_templates
           readOnly: true
-        - name: logstash-efs-tmp
+        - name: enrichment-cache-files
           mountPath: /enrichment-cache-files
           readOnly: false
         - name: logstash-efs
@@ -231,6 +231,8 @@ spec:
       - name: enrichment-cache
         configMap:
           name: enrichment-cache
+      - name: enrichment-cache-files
+        emptyDir: {}
 
       tolerations:   
       - operator: Exists
@@ -246,17 +248,6 @@ spec:
         resources:
           requests:
             storage: 1Mi
-    - metadata:
-        name: logstash-efs-tmp
-        labels:
-          app: logstash-elastic
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: efs
-        resources:
-          requests:
-            storage: 1Mi
-
 
 ---
 kind: Service
