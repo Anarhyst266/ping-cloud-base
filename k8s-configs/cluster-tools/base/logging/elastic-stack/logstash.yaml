@@ -96,7 +96,7 @@ spec:
         volumeMounts:
         - name: enrichment-cache
           mountPath: /enrichment-cache
-        - name: logstash-efs-tmp
+        - name: enrichment-cache-files
           mountPath: /enrichment-cache-files
 
       containers:
