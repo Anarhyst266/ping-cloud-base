@@ -7,7 +7,6 @@ resources:
 - grafana.yaml
 - prometheus.yaml
 - grafana-dashboards.yaml
-- grafana-notifications.yaml
 - prometheus-job-exporter.yaml
 - dashboards
 
