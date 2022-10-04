@@ -8,7 +8,6 @@ resources:
 - prometheus.yaml
 - alertmanager.yaml
 - prometheus-alerts.yaml
-- grafana-dashboards.yaml
 - prometheus-job-exporter.yaml
 - dashboards
 
