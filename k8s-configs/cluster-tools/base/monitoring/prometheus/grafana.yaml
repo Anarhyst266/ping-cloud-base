@@ -15,7 +15,8 @@ data:
                 "name": "prometheus",
                 "type": "prometheus",
                 "url": "http://prometheus.prometheus.svc.cluster.local:9090",
-                "version": 1
+                "version": 1,
+                "uid": "prom0"
             },
             {
                 "access": "proxy",
@@ -1301,7 +1302,7 @@ spec:
         fsGroup: 472
       containers:
         - name: grafana
-          image: public.ecr.aws/r2h3l6e4/pingcloud-monitoring/grafana/dev:v1.16-release-branch-latest
+          image: grafana/grafana-oss:9.1.6
           imagePullPolicy: Always
           securityContext:
             runAsUser: 472
@@ -1327,6 +1328,9 @@ spec:
               readOnly: false
             - mountPath: /etc/grafana/provisioning/dashboards
               name: grafana-dashboards
+            - mountPath: /etc/grafana/provisioning/alerting/provisioning.yaml
+              subPath: provisioning.yaml
+              name: grafana-alerting
             - mountPath: /etc/grafana/grafana.ini
               subPath: grafana.ini
               name: grafana-config
@@ -1348,6 +1352,9 @@ spec:
         - name: grafana-config
           configMap:
             name: grafana-config
+        - name: grafana-alerting
+          configMap:
+            name: grafana-alerting
 
 ---
 
