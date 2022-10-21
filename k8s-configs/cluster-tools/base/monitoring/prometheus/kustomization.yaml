@@ -8,6 +8,9 @@ resources:
 - prometheus.yaml
 - prometheus-job-exporter.yaml
 - dashboards
+- prometheus-config.yaml
+- prometheus-agent-config.yaml
+- prometheus-agent.yaml
 
 configMapGenerator:
 - name: prometheus-environment-variables
