@@ -3,6 +3,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: logging-bootstrap
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   template:
     spec:
@@ -46,6 +48,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: elasticsearch-bootstrap
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   template:
     spec:
@@ -103,6 +107,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: kibana-bootstrap
+  annotations:
+     argocd.argoproj.io/sync-options: Replace=true
 spec:
   template:
     spec:
