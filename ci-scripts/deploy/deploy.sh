@@ -44,7 +44,7 @@ apply_crds "${PROJECT_DIR}"
 # Build file while cert-manager webhook service coming up to save time
 build_dev_deploy_file "${deploy_file}"
 
-kubectl replace -f "${deploy_file}"
+kubectl apply --server-side -f "${deploy_file}"
 
 check_if_ready "${PING_CLOUD_NAMESPACE}"
 
