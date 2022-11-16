@@ -4,10 +4,14 @@ import json
 import boto3
 
 import k8s_utils
+import logging
 
 
 class TestCloudWatchLogs(k8s_utils.K8sUtils):
     log_lines = os.getenv("LOG_LINES_TO_TEST", 10)
+    logging.info("Env vars:")
+    for name, value in os.environ.items():
+        logging.info("{0}: {1}".format(name, value))
 
     aws_region = os.getenv("AWS_REGION", "us-west-2")
     aws_client = boto3.client("logs", region_name=aws_region)

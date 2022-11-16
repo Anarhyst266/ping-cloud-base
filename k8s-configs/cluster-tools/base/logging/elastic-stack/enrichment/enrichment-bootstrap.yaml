@@ -139,14 +139,11 @@ spec:
             allowPrivilegeEscalation: false
           volumeMounts:
             - name: kibana-dashboards-pa
-              mountPath: /scripts/dashboards
-              subPath: pa
+              mountPath: /scripts/dashboards/pa
             - name: kibana-dashboards-pd
-              mountPath: /scripts/dashboards
-              subPath: pd
+              mountPath: /scripts/dashboards/pd
             - name: kibana-dashboards-pf
-              mountPath: /scripts/dashboards
-              subPath: pf
+              mountPath: /scripts/dashboards/pf
             - name: enrichment-elasticsearch-index-templates
               mountPath: /scripts/index-templates
             - name: kibana-alerts
