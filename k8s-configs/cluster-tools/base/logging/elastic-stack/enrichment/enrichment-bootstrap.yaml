@@ -138,8 +138,15 @@ spec:
             runAsGroup: 1000
             allowPrivilegeEscalation: false
           volumeMounts:
-            - name: kibana-dashboards
+            - name: kibana-dashboards-pa
               mountPath: /scripts/dashboards
+              subPath: pa
+            - name: kibana-dashboards-pd
+              mountPath: /scripts/dashboards
+              subPath: pd
+            - name: kibana-dashboards-pf
+              mountPath: /scripts/dashboards
+              subPath: pf
             - name: enrichment-elasticsearch-index-templates
               mountPath: /scripts/index-templates
             - name: kibana-alerts
@@ -153,9 +160,15 @@ spec:
               cpu: "500m"
       restartPolicy: OnFailure
       volumes:
-        - name: kibana-dashboards
+        - name: kibana-dashboards-pa
           configMap:
-            name: kibana-dashboards
+            name: kibana-dashboards-pa
+        - name: kibana-dashboards-pd
+          configMap:
+            name: kibana-dashboards-pd
+        - name: kibana-dashboards-pf
+          configMap:
+            name: kibana-dashboards-pf
         - name: kibana-alerts
           configMap:
             name: kibana-alerts
