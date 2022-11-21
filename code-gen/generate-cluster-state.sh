@@ -237,6 +237,11 @@
 #                            | provided, this value will be used for the cluster  | value. E.g. it will default to "ci-cd"
 #                            | name and must have the correct case (e.g. ci-cd    | for tenant domain "ci-cd.ping-oasis.com"
 #                            | vs. CI-CD).                                        |
+#                            |                                                    |
+# DASH_REPO_URL              | The repository with Kibana\Grafana dashboards      | https://github.com/pingidentity/ping-cloud-dashboards
+#                            |                                                    |
+# DASH_REPO_BRANCH           | Branch where dashboards exists                     | $RELEASE-release-branch(e.g. v1.17-release-branch) for tagged release
+#                            |                                                    | $RELEASE-dev-branch(e.g. v1.17-dev-branch) for release in development
 ########################################################################################################################
 
 #### SCRIPT START ####
@@ -356,7 +361,9 @@ ${NOTIFICATION_ENDPOINT}
 ${PF_PROVISIONING_ENABLED}
 ${RADIUS_PROXY_ENABLED}
 ${IMAGE_TAG_PREFIX}
-${ARGOCD_SLACK_TOKEN_BASE64}'
+${ARGOCD_SLACK_TOKEN_BASE64}
+${DASH_REPO_URL}
+${DASH_REPO_BRANCH}'
 
 # Variables to replace within the generated cluster state code
 REPO_VARS="${REPO_VARS:-${DEFAULT_VARS}}"
@@ -550,6 +557,7 @@ echo "Initial PGO_BUCKET_URI_SUFFIX: ${PGO_BUCKET_URI_SUFFIX}"
 
 echo "Initial IRSA_PING_ANNOTATION_KEY_VALUE: ${IRSA_PING_ANNOTATION_KEY_VALUE}"
 echo "Initial NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE: ${NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE}"
+
 echo ---
 
 # Use defaults for other variables, if not present.
