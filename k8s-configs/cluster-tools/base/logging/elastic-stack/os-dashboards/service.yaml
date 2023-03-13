@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: os-dash-opensearch-dashboards
+  labels:
+    app.kubernetes.io/name: opensearch-dashboards
+    app.kubernetes.io/instance: os-dash
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5601
+    protocol: TCP
+    name: http
+    targetPort: 5601
+  selector:
+    app: opensearch-dashboards
+    release: "os-dash"

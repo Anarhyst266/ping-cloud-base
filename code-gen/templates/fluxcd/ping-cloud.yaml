@@ -1,5 +1,5 @@
 # The minimal bootstrap required to avoid crash loop of the ping-cloud stack.
-# If the SSH secret and known_hosts configmap are not not deployed before the pods, the pods will crash forever.
+# If the SSH secret and known_hosts configmap.yaml are not not deployed before the pods, the pods will crash forever.
 
 apiVersion: v1
 kind: Namespace

@@ -1,0 +1,85 @@
+# Source: opensearch-dashboards/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-dash-opensearch-dashboards
+  labels:
+    app.kubernetes.io/name: opensearch-dashboards
+    app.kubernetes.io/instance: os-dash
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: opensearch-dashboards
+      release: "os-dash"
+  template:
+    metadata:
+      labels:
+        app: opensearch-dashboards
+        release: "os-dash"
+      annotations:
+        configchecksum: 8e721da5a06beb74e698d3d83952389ebdbae95d1ef6346eb453d1179aadb29
+    spec:
+      securityContext:
+        {}
+      serviceAccountName: os-dash-opensearch-dashboards-dashboards
+      volumes:
+        - name: config
+          configMap:
+            name: os-dash-opensearch-dashboards-config
+      containers:
+      - name: dashboards
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+        image: "opensearchproject/opensearch-dashboards:2.6.0"
+        imagePullPolicy: "IfNotPresent"
+        readinessProbe:
+          failureThreshold: 10
+          initialDelaySeconds: 10
+          periodSeconds: 20
+          successThreshold: 1
+          tcpSocket:
+            port: 5601
+          timeoutSeconds: 5
+        livenessProbe:
+          failureThreshold: 10
+          initialDelaySeconds: 10
+          periodSeconds: 20
+          successThreshold: 1
+          tcpSocket:
+            port: 5601
+          timeoutSeconds: 5
+        startupProbe:
+          failureThreshold: 20
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 5601
+          timeoutSeconds: 5
+        env:
+        - name: OPENSEARCH_HOSTS
+          value: "https://opensearch-cluster-master:9200"
+        - name: SERVER_HOST
+          value: "0.0.0.0"
+        ports:
+        - containerPort: 5601
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 512M
+          requests:
+            cpu: 100m
+            memory: 512M
+        volumeMounts:
+          - name: config
+            mountPath: /usr/share/opensearch-dashboards/config/opensearch_dashboards.yml
+            subPath: opensearch_dashboards.yml
