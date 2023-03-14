@@ -44,6 +44,25 @@ patchesStrategicMerge:
       purpose: service-account-for-ping-cloud-stack
       ${IRSA_PING_ANNOTATION_KEY_VALUE}
 
+- |-
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: os-dash-opensearch-dashboards
+  spec:
+    rules:
+      - host: "os-dash.${DNS_ZONE}"
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: os-dash-opensearch-dashboards
+                  port:
+                    number: 5601
+
+
 patchesJson6902:
 - target:
     kind: Service

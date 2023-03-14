@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/ingress.class: nginx-public
 spec:
   rules:
-    - host: "os-dash.antonklyba-primary.ping-demo.com"
+    - host: "os-dash.dev"
       http:
         paths:
           - path: /
