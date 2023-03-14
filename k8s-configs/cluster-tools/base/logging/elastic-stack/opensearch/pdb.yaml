@@ -1,7 +1,7 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: "opensearch-cluster-master-pdb"
+  name: "opensearch-cluster-hot-pdb"
   labels:
     app.kubernetes.io/name: opensearch
     app.kubernetes.io/instance: opensearch-cluster-hot

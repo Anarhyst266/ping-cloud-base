@@ -24,10 +24,9 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: opensearch-cluster-master-headless
+  name: opensearch-cluster-headless
   labels:
     app.kubernetes.io/name: opensearch
-    app.kubernetes.io/instance: opensearch-cluster-hot
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
 spec:
@@ -36,7 +35,6 @@ spec:
   publishNotReadyAddresses: true
   selector:
     app.kubernetes.io/name: opensearch
-    app.kubernetes.io/instance: opensearch-cluster-hot
   ports:
   - name: http
     port: 9200

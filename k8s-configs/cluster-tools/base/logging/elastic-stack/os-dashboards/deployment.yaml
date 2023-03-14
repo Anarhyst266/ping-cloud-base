@@ -2,31 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: os-dash-opensearch-dashboards
+  name: opensearch-dashboards
   labels:
     app.kubernetes.io/name: opensearch-dashboards
-    app.kubernetes.io/instance: os-dash
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: opensearch-dashboards
-      release: "os-dash"
+      app.kubernetes.io/name: opensearch-dashboards
   template:
     metadata:
       labels:
-        app: opensearch-dashboards
-        release: "os-dash"
+        app.kubernetes.io/name: opensearch-dashboards
     spec:
       securityContext:
         {}
-      serviceAccountName: os-dash-opensearch-dashboards-dashboards
+      serviceAccountName: opensearch-dashboards
       volumes:
         - name: config
           configMap:
-            name: os-dash-opensearch-dashboards-config
+            name: opensearch-dashboards-config
       containers:
       - name: dashboards
         securityContext:

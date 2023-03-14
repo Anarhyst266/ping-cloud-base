@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: os-dash-opensearch-dashboards-config
+  name: opensearch-dashboards-config
   labels:
     app.kubernetes.io/name: opensearch-dashboards
-    app.kubernetes.io/instance: os-dash
 data:
   opensearch_dashboards.yml: |
     opensearch.ssl.verificationMode: none

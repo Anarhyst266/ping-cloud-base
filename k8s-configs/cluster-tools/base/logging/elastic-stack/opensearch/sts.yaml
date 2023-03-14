@@ -1,14 +1,12 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: opensearch-cluster-master
+  name: opensearch-cluster-hot
   labels:
     app.kubernetes.io/name: opensearch
     app.kubernetes.io/instance: opensearch-cluster-hot
-  annotations:
-    majorVersion: "2"
 spec:
-  serviceName: opensearch-cluster-master-headless
+  serviceName: opensearch-cluster-headless
   selector:
     matchLabels:
       app.kubernetes.io/name: opensearch
@@ -19,7 +17,7 @@ spec:
     type: RollingUpdate
   volumeClaimTemplates:
   - metadata:
-      name: opensearch-cluster-master
+      name: opensearch-cluster-hot
     spec:
       accessModes:
       - "ReadWriteOnce"
@@ -29,7 +27,7 @@ spec:
       storageClassName: "efs"
   template:
     metadata:
-      name: "opensearch-cluster-master"
+      name: "opensearch-cluster-hot"
       labels:
         app.kubernetes.io/name: opensearch
         app.kubernetes.io/instance: opensearch-cluster-hot
@@ -58,10 +56,10 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: opensearch-cluster-master-config
+          name: opensearch-config
       - name: security-config-data
         secret:
-          secretName: opensearch-cluster-master-securityconfig
+          secretName: opensearch-securityconfig
       enableServiceLinks: false
       containers:
       - name: "opensearch"
@@ -111,9 +109,9 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         - name: cluster.initial_master_nodes
-          value: "opensearch-cluster-master-0,opensearch-cluster-master-1,opensearch-cluster-master-2,"
+          value: "opensearch-cluster-hot-0,opensearch-cluster-hot-1,opensearch-cluster-hot-2,"
         - name: discovery.seed_hosts
-          value: "opensearch-cluster-master-headless"
+          value: "opensearch-cluster-headless"
         - name: cluster.name
           value: "opensearch-cluster"
         - name: network.host
@@ -123,7 +121,7 @@ spec:
         - name: node.roles
           value: "master,ingest,data,remote_cluster_client,"
         volumeMounts:
-        - name: "opensearch-cluster-master"
+        - name: "opensearch-cluster-hot"
           mountPath: /usr/share/opensearch/data
         - mountPath: /usr/share/opensearch/config/opensearch-security
           name: security-config-data
