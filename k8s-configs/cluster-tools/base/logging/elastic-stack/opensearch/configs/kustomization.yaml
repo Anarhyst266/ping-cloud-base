@@ -6,4 +6,4 @@ namespace: elastic-stack-logging
 configMapGenerator:
   - name: opensearch-cluster-master-config
     files:
-      - opensearch.yaml
+      - opensearch.yml
