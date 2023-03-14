@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/instance: os-dash
 data:
   opensearch_dashboards.yml: |
-    opensearch.hosts: [https://localhost:9200]
     opensearch.ssl.verificationMode: none
     opensearch.username: kibanaserver
     opensearch.password: kibanaserver

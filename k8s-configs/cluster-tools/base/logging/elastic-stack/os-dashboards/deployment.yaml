@@ -19,8 +19,6 @@ spec:
       labels:
         app: opensearch-dashboards
         release: "os-dash"
-      annotations:
-        configchecksum: 8e721da5a06beb74e698d3d83952389ebdbae95d1ef6346eb453d1179aadb29
     spec:
       securityContext:
         {}
