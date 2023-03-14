@@ -5013,7 +5013,7 @@ rules:
   verbs: ["create"]
 ---
 # Source: cert-manager/templates/cainjector-rbac.yaml
-# grant cert-manager permission to manage the leaderelection configmap.yaml in the
+# grant cert-manager permission to manage the leaderelection configmap in the
 # leader election namespace
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -5035,7 +5035,7 @@ subjects:
     namespace: cert-manager
 ---
 # Source: cert-manager/templates/rbac.yaml
-# grant cert-manager permission to manage the leaderelection configmap.yaml in the
+# grant cert-manager permission to manage the leaderelection configmap in the
 # leader election namespace
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

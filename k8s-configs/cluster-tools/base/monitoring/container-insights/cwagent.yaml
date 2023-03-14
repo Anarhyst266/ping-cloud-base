@@ -58,7 +58,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ---
 
-# create configmap.yaml for cwagent config
+# create configmap for cwagent config
 apiVersion: v1
 data:
   # Configuration is in Json format. No matter what configure change you make,

@@ -32,7 +32,7 @@ configMapGenerator:
   envs:
   - pingcentral/env_vars
 
-# Merge all env_vars into PingCentral common environment variables configmap.yaml
+# Merge all env_vars into PingCentral common environment variables configmap
 - name: pingcentral-environment-variables
   behavior: merge
   envs:

@@ -35,7 +35,7 @@ metadata:
     app.kubernetes.io/version: "0.24.0"
 data: {} # Injected by karpenter-webhook
 ---
-# Source: karpenter/templates/configmap.yaml-logging.yaml
+# Source: karpenter/templates/configmap-logging.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -73,7 +73,7 @@ data:
     }
   loglevel.webhook: "error"
 ---
-# Source: karpenter/templates/configmap.yaml.yaml
+# Source: karpenter/templates/configmap.yamlа н
 apiVersion: v1
 kind: ConfigMap
 metadata:

@@ -21,7 +21,7 @@ configMapGenerator:
   envs:
   - pingdirectory/env_vars
 
-# Merge all env_vars into Pingdirectory common environment variables configmap.yaml
+# Merge all env_vars into Pingdirectory common environment variables configmap
 - name: pingdirectory-environment-variables
   behavior: merge
   envs:
@@ -36,7 +36,7 @@ configMapGenerator:
   envs:
   - pingdatasync/env_vars
 
-# Merge all env_vars into Pingdatasync common environment variables configmap.yaml
+# Merge all env_vars into Pingdatasync common environment variables configmap
 - name: pingdatasync-environment-variables
   behavior: merge
   envs:

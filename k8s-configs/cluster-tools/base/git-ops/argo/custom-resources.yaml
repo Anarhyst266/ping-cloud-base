@@ -14,7 +14,7 @@ metadata:
     managed-by: argocd.argoproj.io
 type: Opaque
 ---
-# Add a configmap.yaml for Argo to use to configure itself
+# Add a configmap for Argo to use to configure itself
 apiVersion: v1
 kind: ConfigMap
 metadata:

@@ -1,5 +1,5 @@
 ---
-# Source: nri-bundle/charts/nri-kube-events/templates/configmap.yaml.yaml
+# Source: nri-bundle/charts/nri-kube-events/templates/configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -25,7 +25,7 @@ data:
         agentHTTPTimeout: 30s
 
 ---
-# Source: nri-bundle/charts/nri-prometheus/templates/configmap.yaml.yaml
+# Source: nri-bundle/charts/nri-prometheus/templates/configmap.yaml
 
 kind: ConfigMap
 metadata:
@@ -59,7 +59,7 @@ data:
     verbose: false
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/controlplane/agent-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/controlplane/agent-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -88,7 +88,7 @@ data:
     is_forward_only: true
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/controlplane/scraper-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/controlplane/scraper-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -233,7 +233,7 @@ data:
         enabled: true
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/ksm/agent-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/ksm/agent-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -260,7 +260,7 @@ data:
     is_forward_only: true
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/ksm/scraper-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/ksm/scraper-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -284,7 +284,7 @@ data:
       timeout: 10s
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/agent-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/agent-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -312,7 +312,7 @@ data:
     http_server_port: 8003
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/integrations-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/integrations-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -401,7 +401,7 @@ data:
               jq: ".version"
 
 ---
-# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/scraper-configmap.yaml.yaml
+# Source: nri-bundle/charts/newrelic-infrastructure/templates/kubelet/scraper-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -448,7 +448,7 @@ data:
     rm -f NEW_RELIC_LICENSE_KEY
 
 ---
-# Source: nri-bundle/charts/nri-kube-events/templates/agent-configmap.yaml.yaml
+# Source: nri-bundle/charts/nri-kube-events/templates/agent-configmap.yaml
 
 apiVersion: v1
 kind: ConfigMap
