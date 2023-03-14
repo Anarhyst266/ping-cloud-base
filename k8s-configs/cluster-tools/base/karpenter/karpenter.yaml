@@ -73,7 +73,7 @@ data:
     }
   loglevel.webhook: "error"
 ---
-# Source: karpenter/templates/configmap.yamlа н
+# Source: karpenter/templates/configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
