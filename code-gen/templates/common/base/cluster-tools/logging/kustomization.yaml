@@ -58,7 +58,7 @@ patchesJson6902:
 
 - target:
     kind: Ingress
-    name: os-dash-opensearch-dashboards
+    name: opensearch-dashboards
     version: v1
     namespace: elastic-stack-logging
   patch: |-
