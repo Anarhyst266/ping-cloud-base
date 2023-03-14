@@ -44,24 +44,6 @@ patchesStrategicMerge:
       purpose: service-account-for-ping-cloud-stack
       ${IRSA_PING_ANNOTATION_KEY_VALUE}
 
-- |-
-  apiVersion: networking.k8s.io/v1
-  kind: Ingress
-  metadata:
-    name: os-dash-opensearch-dashboards
-  spec:
-    rules:
-      - host: "os-dash.${DNS_ZONE}"
-        http:
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: os-dash-opensearch-dashboards
-                  port:
-                    number: 5601
-
 
 patchesJson6902:
 - target:
@@ -73,3 +55,13 @@ patchesJson6902:
     - op: replace
       path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
       value: elasticsearch.${DNS_ZONE}
+
+- target:
+    kind: Ingress
+    name: os-dash-opensearch-dashboards
+    version: v1
+    namespace: elastic-stack-logging
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: os-dash.${DNS_ZONE}
