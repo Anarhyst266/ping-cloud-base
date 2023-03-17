@@ -192,7 +192,7 @@ data:
         action: replace
         target_label: namespace
       - source_labels: [ __name__ ]
-        regex: 'logstash_node_plugin*'
+        regex: 'logstash_node_plugin.*'
         action: drop
     - job_name: 'kubernetes-pods'
       kubernetes_sd_configs:
