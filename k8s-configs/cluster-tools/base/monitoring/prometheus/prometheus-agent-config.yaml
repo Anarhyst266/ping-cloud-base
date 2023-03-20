@@ -191,9 +191,21 @@ data:
       - source_labels: [__meta_kubernetes_namespace]
         action: replace
         target_label: namespace
-      - source_labels: [ __name__ ]
-        regex: 'logstash_node_plugin.*'
-        action: drop
+    - job_name: 'fluentbit-exporter'
+      scrape_interval: 10s
+      metrics_path: /api/v1/metrics/prometheus
+      kubernetes_sd_configs:
+      - role: pod
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_endpoint_port_name, __meta_kubernetes_pod_name]
+        action: keep
+        regex: metrics;fluent-bit-.*
+      - source_labels: [__meta_kubernetes_pod_name]
+        action: replace
+        target_label: instance
+      - source_labels: [__meta_kubernetes_namespace]
+        action: replace
+        target_label: namespace
     - job_name: 'kubernetes-pods'
       kubernetes_sd_configs:
       - role: pod
