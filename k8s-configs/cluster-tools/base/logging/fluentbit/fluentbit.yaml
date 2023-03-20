@@ -187,3 +187,16 @@ spec:
         effect: "NoExecute"
       - operator: "Exists"
         effect: "NoSchedule"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: fluent-bit
+  labels:
+    k8s-app: fluent-bit
+spec:
+  selector:
+    k8s-app: fluent-bit
+  ports:
+    - port: 2020
+      name: api
