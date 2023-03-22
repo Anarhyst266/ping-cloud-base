@@ -247,6 +247,7 @@ metadata:
   labels:
     app: logstash-elastic
 spec:
+  clusterIP: None
   selector:
     app: logstash-elastic
   ports:
