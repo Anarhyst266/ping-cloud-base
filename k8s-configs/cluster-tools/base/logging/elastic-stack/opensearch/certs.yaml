@@ -13,7 +13,7 @@ metadata:
 spec:
   isCA: true
   commonName: opensearch-self-ca
-  secretName: root-secret
+  secretName: opensearch-self-ca
   privateKey:
     algorithm: ECDSA
     size: 256
@@ -29,7 +29,7 @@ metadata:
   namespace: elastic-stack-logging
 spec:
   ca:
-    secretName: root-secret
+    secretName: opensearch-self-ca
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
