@@ -168,9 +168,6 @@ spec:
             - name: logstash-pipeline-customer
               mountPath: /usr/share/logstash/pipeline/customer
               readOnly: true
-            - name: logstash-pipeline-alerts
-              mountPath: /usr/share/logstash/pipeline/alerts
-              readOnly: true
             - name: enrichment-logstash-search-templates
               mountPath: /etc/logstash/templates
               readOnly: true
@@ -225,9 +222,6 @@ spec:
         - name: logstash-pipeline-customer
           configMap:
             name: logstash-pipeline-customer
-        - name: logstash-pipeline-alerts
-          configMap:
-            name: logstash-pipeline-alerts
         - name: logstash-pipelines
           configMap:
             name: logstash-pipelines
