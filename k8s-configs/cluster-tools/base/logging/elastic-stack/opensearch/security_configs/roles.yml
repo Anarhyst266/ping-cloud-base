@@ -11,8 +11,8 @@ logstash_write:
   cluster_permissions:
     - 'cluster_monitor'
     - 'cluster_composite_ops'
-    - 'indices:admin/template/get'
-    - 'indices:admin/template/put'
+    - 'cluster_manage_index_templates'
+    - 'indices:admin/index_template/*'
     - 'cluster:admin/ingest/pipeline/put'
     - 'cluster:admin/ingest/pipeline/get'
   index_permissions:
