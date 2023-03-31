@@ -86,6 +86,5 @@
     }
   },
   "composed_of": [],
-  "priority": 0,
-  "name": "logstash_template"
+  "priority": 0
 }

@@ -174,7 +174,7 @@ spec:
             - name: enrichment-logstash-search-templates
               mountPath: /etc/logstash/templates
               readOnly: true
-            - name: enrichment-elasticsearch-index-templates
+            - name: opensearch-index-templates
               mountPath: /usr/share/logstash/index_templates
               readOnly: true
             - name: enrichment-cache-files
@@ -234,9 +234,9 @@ spec:
         - name: enrichment-logstash-search-templates
           configMap:
             name: enrichment-logstash-search-templates
-        - name: enrichment-elasticsearch-index-templates
+        - name: opensearch-index-templates
           configMap:
-            name: enrichment-elasticsearch-index-templates
+            name: enrichment-opensearch-index-templates
         - name: enrichment-cache
           configMap:
             name: enrichment-cache
