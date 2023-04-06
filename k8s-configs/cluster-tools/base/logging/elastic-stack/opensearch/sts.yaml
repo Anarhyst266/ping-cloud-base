@@ -60,6 +60,12 @@ spec:
       - name: security-config-data
         secret:
           secretName: opensearch-securityconfig
+      - name: ca-cert
+        secret:
+          secretName: opensearch-self-ca
+      - name: node-cert
+        secret:
+          secretName: opensearch-cert
       enableServiceLinks: false
       containers:
       - name: "opensearch"
@@ -130,6 +136,10 @@ spec:
         - name: config
           mountPath: /usr/share/opensearch/config/opensearch.yml
           subPath: opensearch.yml
+        - name: ca-cert
+          mountPath: /usr/share/opensearch/config/certs/ca
+        - name: node-cert
+          mountPath: /usr/share/opensearch/config/certs/node
 
 ---
 
