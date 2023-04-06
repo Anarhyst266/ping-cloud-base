@@ -41,6 +41,15 @@ spec:
   issuerRef:
     name: opensearch-self
     kind: Issuer
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS8
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  isCA: false
+  commonName: "elastic-stack-logging.svc.cluster.local"
   dnsNames:
   - 'opensearch-cluster-master.elastic-stack-logging.svc.cluster.local'
   - 'opensearch-cluster-headless.elastic-stack-logging.svc.cluster.local'
