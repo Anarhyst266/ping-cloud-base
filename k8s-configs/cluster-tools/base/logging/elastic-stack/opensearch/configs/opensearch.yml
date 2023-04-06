@@ -19,7 +19,7 @@ plugins:
     allow_unsafe_democertificates: false
     allow_default_init_securityindex: true
     nodes_dn:
-      -
+      - CN=elastic-stack-logging.svc.cluster.local
     authcz:
       admin_dn:
         - CN=kirk,OU=client,O=client,L=test,C=de
