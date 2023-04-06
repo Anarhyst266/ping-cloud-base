@@ -114,7 +114,7 @@ spec:
         - name: cluster.initial_master_nodes
           value: "opensearch-cluster-hot-0,opensearch-cluster-hot-1,opensearch-cluster-hot-2,"
         - name: discovery.seed_hosts
-          value: "opensearch-cluster-headless"
+          value: "opensearch-cluster-headless.elastic-stack-logging.svc.cluster.local"
         - name: cluster.name
           value: "opensearch-cluster"
         - name: node.attr.temp
