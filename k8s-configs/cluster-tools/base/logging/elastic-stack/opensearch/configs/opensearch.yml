@@ -10,7 +10,7 @@ plugins:
         pemcert_filepath: certs/tls.crt
         pemkey_filepath: certs/tls.key
         pemtrustedcas_filepath: certs/ca.crt
-        enforce_hostname_verification: false
+        enforce_hostname_verification: true
       http:
         enabled: true
         pemcert_filepath: certs/tls.crt
