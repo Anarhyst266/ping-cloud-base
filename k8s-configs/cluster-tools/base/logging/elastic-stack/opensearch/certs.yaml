@@ -48,7 +48,6 @@ spec:
   usages:
     - server auth
     - client auth
-  isCA: false
   commonName: "elastic-stack-logging.svc.cluster.local"
   dnsNames:
   - 'opensearch-cluster-master.elastic-stack-logging.svc.cluster.local'
