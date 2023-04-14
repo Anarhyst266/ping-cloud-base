@@ -1,0 +1,129 @@
+{
+   "name": "test",
+   "type": "monitor",
+   "monitor_type": "bucket_level_monitor",
+   "enabled": true,
+   "schedule": {
+      "period": {
+         "unit": "MINUTES",
+         "interval": 1
+      }
+   },
+   "inputs": [
+      {
+         "search": {
+            "indices": [
+               "logstash-2023.04.14"
+            ],
+            "query": {
+               "size": 0,
+               "aggregations": {
+                  "composite_agg": {
+                     "composite": {
+                        "sources": [
+                           {
+                              "cluster_name": {
+                                 "terms": {
+                                    "field": "cluster_name"
+                                 }
+                              }
+                           }
+                        ]
+                     },
+                     "aggs": {}
+                  }
+               },
+               "query": {
+                  "bool": {
+                     "filter": [
+                        {
+                           "range": {
+                              "@timestamp": {
+                                 "gte": "{{period_end}}||-1h",
+                                 "lte": "{{period_end}}",
+                                 "format": "epoch_millis"
+                              }
+                           }
+                        },
+                        {
+                           "match_phrase": {
+                              "threat_intel": "Yes"
+                           }
+                        }
+                     ]
+                  }
+               }
+            }
+         }
+      }
+   ],
+   "triggers": [
+      {
+         "bucket_level_trigger": {
+            "id": "5s92f4cB2cVoSpVaSjcs",
+            "name": "test",
+            "severity": "1",
+            "condition": {
+               "buckets_path": {
+                  "_count": "_count"
+               },
+               "parent_bucket_path": "composite_agg",
+               "script": {
+                  "source": "params._count > 1",
+                  "lang": "painless"
+               },
+               "gap_policy": "skip"
+            },
+            "actions": []
+         }
+      }
+   ],
+   "ui_metadata": {
+      "schedule": {
+         "timezone": null,
+         "frequency": "interval",
+         "period": {
+            "unit": "MINUTES",
+            "interval": 1
+         },
+         "daily": 0,
+         "weekly": {
+            "tue": false,
+            "wed": false,
+            "thur": false,
+            "sat": false,
+            "fri": false,
+            "mon": false,
+            "sun": false
+         },
+         "monthly": {
+            "type": "day",
+            "day": 1
+         },
+         "cronExpression": "0 */1 * * *"
+      },
+      "monitor_type": "bucket_level_monitor",
+      "search": {
+         "searchType": "graph",
+         "timeField": "@timestamp",
+         "aggregations": [],
+         "groupBy": [
+            "cluster_name"
+         ],
+         "bucketValue": 1,
+         "bucketUnitOfTime": "h",
+         "where": {
+            "fieldName": [
+               {
+                  "label": "threat_intel",
+                  "type": "text"
+               }
+            ],
+            "fieldRangeEnd": 0,
+            "fieldRangeStart": 0,
+            "fieldValue": "Yes",
+            "operator": "is"
+         }
+      }
+   }
+}
