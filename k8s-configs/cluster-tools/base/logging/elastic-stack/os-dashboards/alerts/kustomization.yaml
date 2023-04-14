@@ -4,6 +4,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 namespace: elastic-stack-logging
 
 configMapGenerator:
-  - name: os-dash-alerts-common
+  - name: os-alerts-common
     files:
       - common.json
+  - name: os-notifications-channels
+    files:
+      - destinations.json

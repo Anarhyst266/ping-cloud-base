@@ -74,7 +74,51 @@
                },
                "gap_policy": "skip"
             },
-            "actions": []
+            "actions": [
+              {
+                    "id": "kQSTf4cBu2AuUFT_JwW3",
+                    "name": "test",
+                    "destination_id": "sns_sreappalerts",
+                    "message_template": {
+                      "source": """Monitor {{ctx.monitor.name}} just entered alert status. Please investigate the issue.
+  - Trigger: {{ctx.trigger.name}}
+  - Severity: {{ctx.trigger.severity}}
+  - Period start: {{ctx.periodStart}}
+  - Period end: {{ctx.periodEnd}}
+
+  - Deduped Alerts:
+  {{#ctx.dedupedAlerts}}
+    * {{id}} : {{bucket_keys}}
+  {{/ctx.dedupedAlerts}}
+
+  - New Alerts:
+  {{#ctx.newAlerts}}
+    * {{id}} : {{bucket_keys}}
+  {{/ctx.newAlerts}}
+
+  - Completed Alerts:
+  {{#ctx.completedAlerts}}
+    * {{id}} : {{bucket_keys}}
+  {{/ctx.completedAlerts}}""",
+                      "lang": "mustache"
+                    },
+                    "throttle_enabled": false,
+                    "subject_template": {
+                      "source": "",
+                      "lang": "mustache"
+                    },
+                    "action_execution_policy": {
+                      "action_execution_scope": {
+                        "per_alert": {
+                          "actionable_alerts": [
+                            "DEDUPED",
+                            "NEW"
+                          ]
+                        }
+                      }
+                    }
+                  }
+              ]
          }
       }
    ],
