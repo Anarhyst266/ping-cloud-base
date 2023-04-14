@@ -81,7 +81,7 @@
           "type": "long"
         },
         "timestamp": {
-          "type": "text",
+          "type": "text"
         },
         "cluster_name": {
           "type": "keyword"
