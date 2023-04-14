@@ -55,6 +55,9 @@
         },
         "timestamp": {
           "type": "text"
+        },
+        "cluster_name": {
+          "type": "keyword"
         }
       }
     }
