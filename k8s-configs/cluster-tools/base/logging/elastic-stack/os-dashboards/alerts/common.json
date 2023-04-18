@@ -13,7 +13,7 @@
       {
          "search": {
             "indices": [
-               "logstash-2023.04.14"
+               "logstash*"
             ],
             "query": {
                "size": 0,
@@ -80,7 +80,7 @@
                     "name": "test",
                     "destination_id": "sns_sreappalerts",
                     "message_template": {
-                      "source": """Monitor {{ctx.monitor.name}} just entered alert status. Please investigate the issue.
+                      "source": "Monitor {{ctx.monitor.name}} just entered alert status. Please investigate the issue.
   - Trigger: {{ctx.trigger.name}}
   - Severity: {{ctx.trigger.severity}}
   - Period start: {{ctx.periodStart}}
@@ -99,7 +99,7 @@
   - Completed Alerts:
   {{#ctx.completedAlerts}}
     * {{id}} : {{bucket_keys}}
-  {{/ctx.completedAlerts}}""",
+  {{/ctx.completedAlerts}}",
                       "lang": "mustache"
                     },
                     "throttle_enabled": false,
