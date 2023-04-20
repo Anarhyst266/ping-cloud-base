@@ -82,7 +82,7 @@ spec:
 
           bash opensearch-docker-entrypoint.sh
 
-        image: "opensearchproject/opensearch:2.6.0"
+        image: "opensearchstaging/opensearch:2.7.0.7747"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 3
@@ -220,7 +220,7 @@ spec:
 
           bash opensearch-docker-entrypoint.sh
 
-        image: "opensearchproject/opensearch:2.6.0"
+        image: "opensearchstaging/opensearch:2.7.0.7747"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 3
