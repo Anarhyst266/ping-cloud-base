@@ -122,6 +122,8 @@ spec:
               value: persisted
             - name: QUEUE_MAX_BYTES
               value: 1000gb
+            - name: SSL_CERT_FILE
+              value: "/usr/share/logstash/certs/ca.crt"
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
