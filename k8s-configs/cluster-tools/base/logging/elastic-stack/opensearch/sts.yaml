@@ -78,7 +78,7 @@ spec:
         - |
           #!/usr/bin/env bash
           set -euo pipefail
-          ./bin/opensearch-plugin install -b repository-s3
+          #./bin/opensearch-plugin install -b repository-s3
 
           bash opensearch-docker-entrypoint.sh
 
@@ -216,7 +216,7 @@ spec:
         - |
           #!/usr/bin/env bash
           set -euo pipefail
-          ./bin/opensearch-plugin install -b repository-s3
+          #./bin/opensearch-plugin install -b repository-s3
 
           bash opensearch-docker-entrypoint.sh
 
