@@ -9,10 +9,10 @@ generatorOptions:
 configMapGenerator:
   - name: os-alerts-pds
     files:
-      - pds1.json
-      - pds2.json
-      - pds3.json
-      - pds4.json
-      - pds5.json
-      - pds6.json
-      - pds7.json
+      - pds_pipe_backlog.json
+      - pds_conn_error.json
+      - pds_ops_error.json
+      - pds_user_err.json
+      - pds_user_fatal.json
+      - pds_work_queue_back.json
+      - pds_work_queue_full.json

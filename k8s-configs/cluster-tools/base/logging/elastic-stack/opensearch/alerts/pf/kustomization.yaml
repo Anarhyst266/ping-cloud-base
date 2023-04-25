@@ -9,10 +9,10 @@ generatorOptions:
 configMapGenerator:
   - name: os-alerts-pf
     files:
-      - pf1.json
-      - pf2.json
-      - pf3.json
-      - pf4.json
-      - pf5.json
-      - pf6.json
-      - pf7.json
+      - pf_authn_exception.json
+      - pf_fatal.json
+      - pf_invalid_req.json
+      - pf_ldap_conn_lost.json
+      - pf_pingid_conn_lost.json
+      - pf_missing_id.json
+      - pf_unexpected_runtime.json
