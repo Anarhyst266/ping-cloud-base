@@ -35,6 +35,7 @@ spec:
             - ALL
           runAsNonRoot: true
           runAsUser: 1000
+        # TODO: change image to production and place it in ECR
         image: "opensearchstaging/opensearch-dashboards:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:

@@ -81,7 +81,7 @@ spec:
           #./bin/opensearch-plugin install -b repository-s3
 
           bash opensearch-docker-entrypoint.sh
-
+# TODO: change image to production one and place it in ECR
         image: "opensearchstaging/opensearch:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
