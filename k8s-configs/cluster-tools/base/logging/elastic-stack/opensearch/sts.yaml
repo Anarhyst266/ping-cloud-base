@@ -82,7 +82,7 @@ spec:
 
           bash opensearch-docker-entrypoint.sh
 
-        image: "opensearchstaging/opensearch:2.7.0.7747"
+        image: "opensearchstaging/opensearch:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 3

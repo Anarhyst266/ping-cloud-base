@@ -35,7 +35,7 @@ spec:
             - ALL
           runAsNonRoot: true
           runAsUser: 1000
-        image: "opensearchstaging/opensearch-dashboards:2.7.0.6090"
+        image: "opensearchstaging/opensearch-dashboards:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 10
