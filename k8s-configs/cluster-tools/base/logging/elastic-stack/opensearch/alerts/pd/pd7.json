@@ -1,5 +1,5 @@
 {
-   "name": "test",
+   "name": "PingDirectory External Server Initialization Failed",
    "type": "monitor",
    "monitor_type": "bucket_level_monitor",
    "enabled": true,
@@ -39,16 +39,21 @@
                         {
                            "range": {
                               "@timestamp": {
-                                 "gte": "{{period_end}}||-1h",
+                                 "gte": "{{period_end}}||-1m",
                                  "lte": "{{period_end}}",
                                  "format": "epoch_millis"
                               }
                            }
                         },
                         {
-                           "match_phrase": {
-                              "threat_intel": "Yes"
-                           }
+                          "match_phrase": {
+                            "kubernetes.container_name": "pingdirectory"
+                          }
+                        },
+                        {
+                          "match_phrase": {
+                            "msg": "\"external-server-initialization-failed\""
+                          }
                         }
                      ]
                   }
@@ -60,8 +65,7 @@
    "triggers": [
       {
          "bucket_level_trigger": {
-            "id": "5s92f4cB2cVoSpVaSjcs",
-            "name": "test",
+            "name": "Count more than 1",
             "severity": "1",
             "condition": {
                "buckets_path": {
@@ -76,35 +80,38 @@
             },
             "actions": [
               {
-                    "id": "kQSTf4cBu2AuUFT_JwW3",
-                    "name": "test",
+                    "name": "SREAPPALERTS",
                     "destination_id": "sns_sreappalerts",
                     "message_template": {
-                      "source": "Monitor {{ctx.monitor.name}} just entered alert status. Please investigate the issue.
-  - Trigger: {{ctx.trigger.name}}
-  - Severity: {{ctx.trigger.severity}}
-  - Period start: {{ctx.periodStart}}
-  - Period end: {{ctx.periodEnd}}
-
-  - Deduped Alerts:
-  {{#ctx.dedupedAlerts}}
-    * {{id}} : {{bucket_keys}}
-  {{/ctx.dedupedAlerts}}
-
-  - New Alerts:
-  {{#ctx.newAlerts}}
-    * {{id}} : {{bucket_keys}}
-  {{/ctx.newAlerts}}
-
-  - Completed Alerts:
-  {{#ctx.completedAlerts}}
-    * {{id}} : {{bucket_keys}}
-  {{/ctx.completedAlerts}}",
+                      "source": "Alert '{{ctx.monitor.name}}' is active:\n- Value: {{ctx.results.0.hits.total.value}}\n- Conditions Met: Number of matching documents is greater than 1 over 1m\n- Timestamp: {{ctx.periodEnd}}",
                       "lang": "mustache"
                     },
                     "throttle_enabled": false,
                     "subject_template": {
-                      "source": "",
+                      "source": "ALERT: {{ctx.monitor.name}} in {{#ctx.newAlerts}}{{bucket_keys}}{{/ctx.newAlerts}}{{#ctx.dedupedAlerts}}{{bucket_keys}}{{/ctx.dedupedAlerts}}",
+                      "lang": "mustache"
+                    },
+                    "action_execution_policy": {
+                      "action_execution_scope": {
+                        "per_alert": {
+                          "actionable_alerts": [
+                            "DEDUPED",
+                            "NEW"
+                          ]
+                        }
+                      }
+                    }
+                  },
+               {
+                    "name": "CUSTOMERHUB",
+                    "destination_id": "sns_customerhub",
+                    "message_template": {
+                      "source": "Alert '{{ctx.monitor.name}}' is active:\n- Value: {{ctx.results.0.hits.total.value}}\n- Conditions Met: Number of matching documents is greater than 1 over 1m\n- Timestamp: {{ctx.periodEnd}}",
+                      "lang": "mustache"
+                    },
+                    "throttle_enabled": false,
+                    "subject_template": {
+                      "source": "ALERT: {{ctx.monitor.name}} in {{#ctx.newAlerts}}{{bucket_keys}}{{/ctx.newAlerts}}{{#ctx.dedupedAlerts}}{{bucket_keys}}{{/ctx.dedupedAlerts}}",
                       "lang": "mustache"
                     },
                     "action_execution_policy": {
@@ -121,53 +128,5 @@
               ]
          }
       }
-   ],
-   "ui_metadata": {
-      "schedule": {
-         "timezone": null,
-         "frequency": "interval",
-         "period": {
-            "unit": "MINUTES",
-            "interval": 1
-         },
-         "daily": 0,
-         "weekly": {
-            "tue": false,
-            "wed": false,
-            "thur": false,
-            "sat": false,
-            "fri": false,
-            "mon": false,
-            "sun": false
-         },
-         "monthly": {
-            "type": "day",
-            "day": 1
-         },
-         "cronExpression": "0 */1 * * *"
-      },
-      "monitor_type": "bucket_level_monitor",
-      "search": {
-         "searchType": "graph",
-         "timeField": "@timestamp",
-         "aggregations": [],
-         "groupBy": [
-            "cluster_name"
-         ],
-         "bucketValue": 1,
-         "bucketUnitOfTime": "h",
-         "where": {
-            "fieldName": [
-               {
-                  "label": "threat_intel",
-                  "type": "text"
-               }
-            ],
-            "fieldRangeEnd": 0,
-            "fieldRangeStart": 0,
-            "fieldValue": "Yes",
-            "operator": "is"
-         }
-      }
-   }
+   ]
 }

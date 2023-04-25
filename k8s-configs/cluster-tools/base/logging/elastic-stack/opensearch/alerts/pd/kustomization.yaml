@@ -1,0 +1,52 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+namespace: elastic-stack-logging
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: os-alerts-pd-1
+    files:
+      - pd1.json
+      - pd2.json
+      - pd3.json
+      - pd4.json
+      - pd5.json
+      - pd6.json
+      - pd7.json
+      - pd8.json
+      - pd9.json
+      - pd10.json
+  - name: os-alerts-pd-2
+    files:
+      - pd11.json
+      - pd12.json
+      - pd13.json
+      - pd14.json
+      - pd15.json
+      - pd16.json
+      - pd17.json
+      - pd18.json
+      - pd19.json
+      - pd20.json
+  - name: os-alerts-pd-3
+    files:
+      - pd21.json
+      - pd22.json
+      - pd23.json
+      - pd24.json
+      - pd25.json
+      - pd26.json
+      - pd27.json
+      - pd28.json
+      - pd29.json
+      - pd30.json
+  - name: os-alerts-pd-4
+    files:
+      - pd31.json
+      - pd32.json
+      - pd33.json
+      - pd34.json
+      - pd35.json
