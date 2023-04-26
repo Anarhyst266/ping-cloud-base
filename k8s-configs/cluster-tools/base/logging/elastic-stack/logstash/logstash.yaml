@@ -30,7 +30,7 @@ spec:
             - $(CONTAINER_NAME).sh
           env:
             - name: CONTAINER_NAME
-              value: check-service-availability
+              value: check-opensearch-availability
             - name: CHECK_SERVICE_URL
               value: 'https://opensearch-cluster-master'
             - name: CHECK_SERVICE_PORT
