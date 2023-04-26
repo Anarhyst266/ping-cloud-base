@@ -266,6 +266,7 @@ metadata:
 spec:
   selector:
     app: logstash-elastic
+  clusterIP: None
   ports:
     - port: 9600
       name: rest
