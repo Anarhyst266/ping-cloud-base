@@ -17,7 +17,7 @@
         },
         "plugins": {
           "index_state_management": {
-            "rollover_alias": "healthchecks"
+            "rollover_alias": "backup-jobs"
           }
         }
       }
