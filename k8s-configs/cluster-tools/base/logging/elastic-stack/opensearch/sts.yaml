@@ -82,7 +82,7 @@ spec:
 
           bash opensearch-docker-entrypoint.sh
 # TODO: change image to production one and place it in ECR
-        image: "opensearchstaging/opensearch:2.7.0"
+        image: "opensearchproject/opensearch:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 3
@@ -221,7 +221,7 @@ spec:
           bash opensearch-docker-entrypoint.sh
 
 # TODO: change image to production one and place it in ECR
-        image: "opensearchstaging/opensearch:2.7.0"
+        image: "opensearchproject/opensearch:2.7.0"
         imagePullPolicy: "IfNotPresent"
         readinessProbe:
           failureThreshold: 3
