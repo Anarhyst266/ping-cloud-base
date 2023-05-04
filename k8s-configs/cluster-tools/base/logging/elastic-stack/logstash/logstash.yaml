@@ -123,7 +123,7 @@ spec:
             - name: QUEUE_MAX_BYTES
               value: 1000gb
             - name: XPACK_MONITORING_ENABLED
-              value: false
+              value: "false"
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
