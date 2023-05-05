@@ -70,7 +70,7 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-      restartPolicy: Never
+      restartPolicy: OnFailure
       volumes:
         - name: os-ism-policies
           configMap:
