@@ -43,11 +43,7 @@ spec:
             value: "/usr/share/opensearch/data/notifications"
           - name: ISM_PATH
             value: "/usr/share/opensearch/data/ism-policies"
-          - name: CERTS_PATH
-            value: "/usr/share/opensearch/certs/ca.crt"
         volumeMounts:
-          - name: os-certs
-            mountPath: /usr/share/opensearch/certs
           - name: os-ism-policies
             mountPath: /usr/share/opensearch/data/ism-policies
           - name: os-index-templates
@@ -75,9 +71,6 @@ spec:
             cpu: "500m"
       restartPolicy: OnFailure
       volumes:
-        - name: os-certs
-          secret:
-            secretName: opensearch-cert
         - name: os-ism-policies
           configMap:
             name: os-ism-policies
@@ -113,5 +106,5 @@ metadata:
   annotations:
     sealedsecrets.bitnami.com/managed: "true"
 data:
-  username: YWRtaW4K
-  password: YWRtaW4K
+  username: YWRtaW4=
+  password: YWRtaW4=
