@@ -23,6 +23,8 @@ spec:
             value: "opensearch-cluster-master.elastic-stack-logging.svc.cluster.local"
           - name: OS_PORT
             value: "9200"
+          - name: VERBOSE
+            value: "true"
           - name: USERNAME
             valueFrom:
               secretKeyRef:
