@@ -170,10 +170,10 @@ spec:
             - name: logstash-pipeline-customer
               mountPath: /usr/share/logstash/pipeline/customer
               readOnly: true
-            - name: enrichment-logstash-search-templates
+            - name: os-search-templates
               mountPath: /etc/logstash/templates
               readOnly: true
-            - name: opensearch-index-templates
+            - name: os-index-templates
               mountPath: /usr/share/logstash/index_templates
               readOnly: true
             - name: enrichment-cache-files
@@ -229,12 +229,12 @@ spec:
         - name: logstash-pipelines
           configMap:
             name: logstash-pipelines
-        - name: enrichment-logstash-search-templates
+        - name: os-search-templates
           configMap:
-            name: enrichment-logstash-search-templates
-        - name: opensearch-index-templates
+            name: os-search-templates
+        - name: os-index-templates
           configMap:
-            name: enrichment-opensearch-index-templates
+            name: os-index-templates
         - name: enrichment-cache
           configMap:
             name: enrichment-cache
