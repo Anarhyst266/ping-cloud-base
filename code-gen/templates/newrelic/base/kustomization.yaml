@@ -1,0 +1,11 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+namespace: newrelic
+
+helmCharts:
+  - name: newrelic
+    includeCRDs: true
+    valuesFile: "values.yaml"
+    releaseName: ping
+    version: 5.0.12
+    repo: https://helm-charts.newrelic.com
