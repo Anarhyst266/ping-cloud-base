@@ -10,15 +10,17 @@ spec:
     kind: StatefulSet
     name: logstash-elastic
   metrics:
-  - type: Resource
-    resource:
+  - type: ContainerResource
+    containerResource:
+      container: logstash
       name: cpu
       target:
-        type: AverageValue
-        averageValue: "0.4"
-  - type: Resource
-    resource:
-      name: memory
+        type: Utilization
+        averageUtilization: 80
+  - type: ContainerResource
+    containerResource:
+      container: logstash
+      name: mem
       target:
-        type: AverageValue
-        averageValue: 400Mi
+        type: Utilization
+        averageUtilization: 90
