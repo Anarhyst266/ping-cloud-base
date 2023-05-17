@@ -9,6 +9,11 @@ spec:
     apiVersion: apps/v1
     kind: StatefulSet
     name: logstash-elastic
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+    scaleUp:
+      stabilizationWindowSeconds: 180
   metrics:
   - type: Resource
     resource:
