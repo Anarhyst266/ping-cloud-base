@@ -89,6 +89,13 @@ spec:
             - containerPort: 9198
               name: metrics
               protocol: TCP
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 500Mi
+            requests:
+              cpu: "150m"
+              memory: 100Mi
         - name: logstash
           image: public.ecr.aws/r2h3l6e4/pingcloud-monitoring/logstash/dev:v1.18-release-branch-latest
           imagePullPolicy: Always
@@ -113,7 +120,7 @@ spec:
             - name: PIPELINE_BATCH_DELAY
               value: '20'
             - name: PIPELINE_BATCH_SIZE
-              value: '100'
+              value: '1000'
             - name: PIPELINE_ECS_COMPATIBILITY
               value: disabled
             - name: PIPELINE_ORDERED
@@ -122,6 +129,8 @@ spec:
               value: persisted
             - name: QUEUE_MAX_BYTES
               value: 1000gb
+            - name: LS_JAVA_OPTS
+              value: "-Xms1g -Xmx1g"
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
