@@ -224,7 +224,7 @@ spec:
             requests:
               cpu: "150m"
               memory: 100Mi
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 600
       volumes:
         - name: logstash-pipeline-main
           configMap:
