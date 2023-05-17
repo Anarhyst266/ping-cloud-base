@@ -112,13 +112,9 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
             - name: CONFIG_RELOAD_AUTOMATIC
-              value: 'true'
-            - name: CONFIG_RELOAD_INTERVAL
-              value: 5s
+              value: 'false'
             - name: LOG_FORMAT
               value: json
-            - name: PIPELINE_BATCH_DELAY
-              value: '20'
             - name: PIPELINE_BATCH_SIZE
               value: '1000'
             - name: PIPELINE_ECS_COMPATIBILITY
