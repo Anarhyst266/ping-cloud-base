@@ -20,4 +20,4 @@ spec:
             - name: PIPELINE_WORKERS
               value: "16"
             - name: PIPELINE_BATCH_SIZE
-              value: "1500"
+              value: "1000"
