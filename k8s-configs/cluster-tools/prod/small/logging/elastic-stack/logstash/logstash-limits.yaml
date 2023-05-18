@@ -16,7 +16,7 @@ spec:
               memory: 6Gi
           env:
             - name: LS_JAVA_OPTS
-              value: '-Xms5g -Xmx5g'
+              value: '-Xms4g -Xmx4g'
             - name: PIPELINE_WORKERS
               value: "16"
             - name: PIPELINE_BATCH_SIZE
