@@ -5,3 +5,17 @@ metadata:
 spec:
   serviceName: elasticsearch
   replicas: 5
+  template:
+    spec:
+      containers:
+        - name: elasticsearch
+          resources:
+            limits:
+              memory: 8Gi
+              cpu: "4"
+            requests:
+              memory: 6Gi
+              cpu: "2"
+          env:
+            - name: ES_JAVA_OPTS
+              value: "-Xms6g -Xmx6g"

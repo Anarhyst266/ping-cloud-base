@@ -96,6 +96,8 @@ spec:
               value: >-
                 master, data_hot, data_content, ingest, ml, transform,
                 remote_cluster_client
+            - name: ES_JAVA_OPTS
+              value: "-Xms4g -Xmx4g"
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
