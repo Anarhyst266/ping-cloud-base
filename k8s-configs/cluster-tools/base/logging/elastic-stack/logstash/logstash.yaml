@@ -157,7 +157,7 @@ spec:
             - name: logstash-pipeline-customer
               mountPath: /usr/share/logstash/pipeline/customer
               readOnly: true
-            - name: enrichment-logstash-search-templates
+            - name: logstash-search-template
               mountPath: /etc/logstash/templates
               readOnly: true
             - name: os-index-templates
@@ -216,9 +216,9 @@ spec:
         - name: logstash-pipelines
           configMap:
             name: logstash-pipelines
-        - name: enrichment-logstash-search-templates
+        - name: elogstash-search-template
           configMap:
-            name: enrichment-logstash-search-templates
+            name: logstash-search-template
         - name: os-index-templates
           configMap:
             name: os-index-templates
@@ -252,6 +252,11 @@ metadata:
   name: logstash-elastic
   labels:
     app: logstash-elastic
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io.scheme: "http"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "9198"
 spec:
   selector:
     app: logstash-elastic

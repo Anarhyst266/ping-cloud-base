@@ -61,6 +61,11 @@ metadata:
   name: fluent-bit
   labels:
     k8s-app: fluent-bit
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io.scheme: "http"
+    prometheus.io/path: "/api/v1/metrics/prometheus"
+    prometheus.io/port: "2020"
 spec:
   selector:
     matchLabels:
