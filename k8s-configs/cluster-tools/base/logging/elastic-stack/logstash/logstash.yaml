@@ -216,7 +216,7 @@ spec:
         - name: logstash-pipelines
           configMap:
             name: logstash-pipelines
-        - name: elogstash-search-template
+        - name: logstash-search-template
           configMap:
             name: logstash-search-template
         - name: os-index-templates
@@ -254,7 +254,7 @@ metadata:
     app: logstash-elastic
   annotations:
     prometheus.io/scrape: "true"
-    prometheus.io.scheme: "http"
+    prometheus.io/scheme: "http"
     prometheus.io/path: "/metrics"
     prometheus.io/port: "9198"
 spec:
