@@ -65,7 +65,7 @@ spec:
           secretName: opensearch-cert
       enableServiceLinks: false
       containers:
-      - name: "opensearch"
+      - name: opensearch
         securityContext:
           capabilities:
             drop:
