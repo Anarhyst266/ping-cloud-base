@@ -111,6 +111,16 @@ spec:
               value: "-Xms1g -Xmx1g"
             - name: XPACK_MONITORING_ENABLED
               value: "false"
+            - name: OS_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: os-logstash-creds
+            - name: OS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: os-logstash-creds
           envFrom:
             - configMapRef:
                 name: elk-environment-variables
@@ -308,4 +318,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: logstash-elastic
-
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: os-logstash-creds
+  annotations:
+    sealedsecrets.bitnami.com/managed: "true"
+data:
+  username: bG9nc3Rhc2g=
+  password: a2Vvc2h1cGhlaThlaWo0RWE1b29iZWk3b29xdWVpdGg=
