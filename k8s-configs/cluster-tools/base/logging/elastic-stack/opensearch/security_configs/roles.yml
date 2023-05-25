@@ -6,8 +6,15 @@ _meta:
 kibana_read_only:
   reserved: true
 
-logstash_write:
+logstash:
   reserved: true
+  cluster_permissions:
+    - 'cluster_monitor'
+    - 'cluster_composite_ops'
+    - 'indices:admin/template/get'
+    - 'indices:admin/template/put'
+    - 'cluster:admin/ingest/pipeline/put'
+    - 'cluster:admin/ingest/pipeline/get'
   index_permissions:
     - index_patterns:
         - '*'
