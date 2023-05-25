@@ -15,7 +15,6 @@ logstash_write:
     - 'indices:admin/template/put'
     - 'cluster:admin/ingest/pipeline/put'
     - 'cluster:admin/ingest/pipeline/get'
-    - 'indices:monitor/settings/get'
   index_permissions:
     - index_patterns:
         - '*'
