@@ -109,6 +109,5 @@
     "timestamp_field": {
       "name": "@timestamp"
     }
-  },
-  "name": "logstash"
+  }
 }
