@@ -2,26 +2,13 @@
   "index_patterns": [
     "logstash"
   ],
-  "data_stream": {
-    "timestamp_field": {
-      "name": "@timestamp"
-    }
-  },
   "template": {
     "settings": {
+      "index.routing.allocation.require.temp": "hot",
+      "index.refresh_interval": "30s",
       "index.unassigned.node_left.delayed_timeout": "10m",
       "index.number_of_shards": "3",
-      "index.number_of_replicas": "1",
-      "index.refresh_interval": "30s",
-      "index": {
-        "routing": {
-          "allocation": {
-            "require": {
-              "temp": "hot"
-            }
-          }
-        }
-      }
+      "index.number_of_replicas": "1"
     },
     "mappings": {
       "dynamic_templates": [
@@ -54,6 +41,39 @@
       ],
       "date_detection": false,
       "properties": {
+        "cluster_name": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "ignore_above": 256,
+              "type": "keyword"
+            }
+          }
+        },
+        "msg": {"type": "text"},
+        "kubernetes": {
+          "type": "object",
+          "properties": {
+            "container_name": {
+              "type": "keyword"
+            },
+            "annotations": {
+              "type": "object"
+            },
+            "docker_id": {
+              "type": "text"
+            },
+            "pod_name": {
+              "type": "keyword"
+            },
+            "namespace_name": {
+              "type": "keyword"
+            },
+            "labels": {
+              "type": "object"
+            }
+          }
+        },
         "@timestamp": {
           "type": "date"
         },
@@ -79,19 +99,16 @@
         },
         "timestamp": {
           "type": "text"
-        },
-        "cluster_name": {
-          "type": "text",
-          "fields": {
-            "keyword": {
-              "type": "keyword",
-              "ignore_above": 256
-            }
-          }
         }
       }
     }
   },
   "composed_of": [],
-  "priority": 100
+  "priority": 100,
+  "data_stream": {
+    "timestamp_field": {
+      "name": "@timestamp"
+    }
+  },
+  "name": "logstash"
 }
