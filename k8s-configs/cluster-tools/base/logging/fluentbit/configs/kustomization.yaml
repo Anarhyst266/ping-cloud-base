@@ -8,7 +8,7 @@ generatorOptions:
     k8s-app: fluent-bit
 
 configMapGenerator:
-  - name: fluent-bit-config
+  - name: fluent-bit-config-test
     files:
       - fluent-bit.conf
       - parsers.conf
