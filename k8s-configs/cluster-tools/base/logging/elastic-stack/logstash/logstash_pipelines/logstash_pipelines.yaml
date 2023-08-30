@@ -16,6 +16,6 @@ data:
       path.config: "/usr/share/logstash/pipeline/cloudwatch"
     - pipeline.id: newrelic
       path.config: "/usr/share/logstash/pipeline/newrelic"
-    - pipeline.id: dlq
+    - pipeline.id: zzzdlq
       path.config: "/usr/share/logstash/pipeline/dlq"
       pipeline.workers: 1
