@@ -8,6 +8,8 @@
       "index.number_of_shards": "1",
       "index.number_of_replicas": "1",
       "index.refresh_interval": "30s",
+      "index.translog.flush_threshold_size": "10mb",
+      "index.translog.sync_interval": "500ms",
       "index": {
         "routing": {
           "allocation": {

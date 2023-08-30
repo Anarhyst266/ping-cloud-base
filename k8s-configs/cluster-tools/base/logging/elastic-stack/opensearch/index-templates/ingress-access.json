@@ -7,6 +7,8 @@
       "index.routing.allocation.require.temp": "hot",
       "index.refresh_interval": "30s",
       "index.unassigned.node_left.delayed_timeout": "15m",
+      "index.translog.flush_threshold_size": "10mb",
+      "index.translog.sync_interval": "500ms",
       "index.number_of_shards": "1",
       "index.number_of_replicas": "1"
     },
