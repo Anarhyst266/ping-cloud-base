@@ -18,6 +18,9 @@ global:
 
   sealedSecrets: false
   secrets:
+    newrelic:
+      newrelic-license-key:
+        NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY_BASE64}
 
   ########################################################
   # Multi-region parameters
