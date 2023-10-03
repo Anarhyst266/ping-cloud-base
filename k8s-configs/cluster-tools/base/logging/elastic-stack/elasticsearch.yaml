@@ -199,8 +199,6 @@ spec:
           value: "false"
         - name: node.roles 
           value: "master, data_hot, data_content, ingest, ml, transform, remote_cluster_client"
-        - name: xpack.reporting.queue.timeout
-          value: '600'
         envFrom:
           - configMapRef:
               name: elk-environment-variables

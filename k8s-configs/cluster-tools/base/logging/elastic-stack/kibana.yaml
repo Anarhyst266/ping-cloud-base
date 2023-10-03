@@ -78,6 +78,8 @@ spec:
             value: "phaishungei5quiupahsh8ahgu9aen8aer9zo6cheek6eengohFooqu4aquieke5"
           - name: XPACK_REPORTING_KIBANASERVER_HOSTNAME
             value: localhost
+          - name: XPACK_REPORTING_QUEUE_TIMEOUT
+            value: '600'
         envFrom:
           - configMapRef:
               name: elk-environment-variables
