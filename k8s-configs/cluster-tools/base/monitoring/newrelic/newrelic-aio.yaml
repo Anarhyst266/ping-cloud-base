@@ -61,15 +61,7 @@ metadata:
   name: nri-bundle-nri-kube-events
   namespace: newrelic
   annotations:
----
-# Source: p1as-newrelic/templates/nr-license-key-secret.tpl
-apiVersion: v1
-kind: Secret
-data:
-  NEW_RELIC_LICENSE_KEY: MTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OTBhYmNkZWYxMjM0NTY3OA==
-metadata:
-  name: newrelic-license-key
-  namespace: newrelic
+
 ---
 # Source: p1as-newrelic/charts/nri-bundle/charts/newrelic-infrastructure/templates/controlplane/agent-configmap.yaml
 apiVersion: v1
