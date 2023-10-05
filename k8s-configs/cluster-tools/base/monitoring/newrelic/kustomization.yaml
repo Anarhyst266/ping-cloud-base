@@ -13,5 +13,6 @@ resources:
   - service.yaml
   - serviceaccount.yaml
   - statefulset.yaml
+  - secret.yaml
   - role.yaml
   - rolebinding.yaml
