@@ -25,7 +25,7 @@ data:
     - name: opsgenie
       opsgenie_configs:
         - api_key_file: "/var/run/opsgenie.key"
-          message: "{{ .CommonAnnotations.summary }} in {{ .Labels.k8s_cluster_name }}"
+          message: "{{ .CommonAnnotations.summary }} in {{ .CommonLabels.k8s_cluster_name }}"
           description: "{{ .CommonAnnotations.description }}"
           details: { "runbook": "{{ .CommonAnnotations.runbook }}" }
 ---
