@@ -3,5 +3,6 @@ kind: Secret
 type: Opaque
 metadata:
   name: opsgenie-key
+  namespace: prometheus
 data:
   api-key: "UExBQ0VIT0xERVIK"
