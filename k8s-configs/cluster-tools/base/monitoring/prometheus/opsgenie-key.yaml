@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: opsgenie-key
+data:
+  api-key: "UExBQ0VIT0xERVIK"
