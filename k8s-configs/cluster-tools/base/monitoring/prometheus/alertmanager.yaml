@@ -27,7 +27,7 @@ data:
         - api_key_file: "/var/run/opsgenie.key"
           message: "{{ .CommonAnnotations.summary }} in {{ .CommonLabels.k8s_cluster_name }}"
           description: "{{ .CommonAnnotations.description }}"
-          details: { "runbook": "{{ .CommonAnnotations.runbook }}" }
+          details: { "runbook": "{{ .CommonAnnotations.runbook }}", "severity": "{{ .CommonAnnotations.severity }}" }
 ---
 apiVersion: apps/v1
 kind: Deployment
